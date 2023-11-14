@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HomeFragment">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/linearHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/tvHomeHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Home"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/myfont"
+                    android:textSize="@dimen/_25ssp"
+                    android:textColor="@color/accent"
+                    android:textStyle="bold"/>
+                <ImageView
+                    android:id="@+id/ivHomeSearch"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_search"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvHomeFirstPic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What will you like to eat"
+                style="@style/homeHeaderText"
+                app:layout_constraintStart_toStartOf="@id/linearHeader"
+                app:layout_constraintTop_toBottomOf="@id/linearHeader"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardWelcomeHome"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_160sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintStart_toStartOf="@id/tvHomeFirstPic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvHomeFirstPic">
+                <ImageView
+                    android:id="@+id/ivCardWelcomeHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+
+                <LinearLayout
+                    android:id="@+id/randomLoader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_15ssp"
+                        android:text="Loading"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/myfont"
+                        android:textStyle="bold"/>
+                    <com.github.ybq.android.spinkit.SpinKitView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/spin_kit"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        style="@style/SpinKitView.Small.ThreeBounce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:SpinKit_Color="@color/black"
+                        android:layout_gravity="center" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/tvPopularItemHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Over Popular Items"
+                style="@style/homeHeaderText"
+                app:layout_constraintStart_toStartOf="@id/cardWelcomeHome"
+                app:layout_constraintTop_toBottomOf="@id/cardWelcomeHome"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPopularItem"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_90sdp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="@id/tvPopularItemHeading"
+                app:layout_constraintTop_toBottomOf="@id/tvPopularItemHeading"/>
+
+            <TextView
+                android:id="@+id/tvCategoriesHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                style="@style/homeHeaderText"
+                app:layout_constraintStart_toStartOf="@id/rvPopularItem"
+                app:layout_constraintTop_toBottomOf="@id/rvPopularItem"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:elevation="@dimen/_3sdp"
+                android:scrollbars="none"
+                android:layout_marginEnd="@dimen/_20sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvCategoriesHeader"
+                app:layout_constraintTop_toBottomOf="@id/tvCategoriesHeader">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvHomeCategories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                 app:spanCount="3"
+                    tools:listitem="@layout/sample_category"/>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>
